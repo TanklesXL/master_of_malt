@@ -68,19 +68,19 @@ defmodule CoreHelpers do
   def notes_html(notes) do
     """
     <div>
-     <p id="ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_noseTastingNote" class="pageCopy">
+     <p id="ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_noseTastingNote" class="pageCopy">
        <b>Nose:</b>
        #{notes[:nose]}
      </p>
-     <p id="ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_palateTastingNote" class="pageCopy">
+     <p id="ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_palateTastingNote" class="pageCopy">
        <b>Palate:</b>
        #{notes[:palate]}
      </p>
-     <p id="ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_finishTastingNote" class="pageCopy">
+     <p id="ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_finishTastingNote" class="pageCopy">
        <b>Finish:</b>
        #{notes[:finish]}
      </p>
-     <p id="ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_overallTastingNote" class="pageCopy">
+     <p id="ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_overallTastingNote" class="pageCopy">
        <b>Overall:</b>
        #{notes[:overall]}
      </p>
@@ -95,7 +95,7 @@ defmodule CoreHelpers do
         #{info[:name]}
       </h2>
       <img
-        id="ContentPlaceHolder1_ctl00_ctl02_MobileProductImage_imgProductBig2"
+        id="ContentPlaceHolder1_ctl00_ctl03_MobileProductImage_imgProductBig2"
         src="#{info[:img]}"
       />
       <div itemprop=description>
