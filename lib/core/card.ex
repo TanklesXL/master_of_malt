@@ -34,7 +34,7 @@ defmodule MasterOfMalt.Core.Card do
   defp image_ref(html) do
     src =
       html
-      |> Floki.find("#ContentPlaceHolder1_ctl00_ctl02_MobileProductImage_imgProductBig2")
+      |> Floki.find("#ContentPlaceHolder1_ctl00_ctl03_MobileProductImage_imgProductBig2")
       |> Floki.attribute("src")
       |> List.first()
 
