@@ -10,7 +10,7 @@ defmodule MasterOfMalt.MixProject do
       deps: [
         {:floki, "~> 0.29"},
         {:httpoison, "~> 1.7"},
-        {:credo, "~> 1.5.1", only: [:dev, :test], runtime: false}
+        {:credo, "~> 1.5.4", only: [:dev, :test], runtime: false}
       ]
     ]
   end
