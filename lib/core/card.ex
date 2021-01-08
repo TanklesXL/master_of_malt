@@ -43,10 +43,4 @@ defmodule MasterOfMalt.Core.Card do
   end
 
   defp description(html), do: HTML.find_text(html, "[itemprop=description] p")
-
-  defimpl String.Chars do
-    def to_string(card) do
-      "#{card.name}:\n\t#{card.desc}\nImage:\n\t#{card.img}\n#{Kernel.to_string(card.notes)}"
-    end
-  end
 end

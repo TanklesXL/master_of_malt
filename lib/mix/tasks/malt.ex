@@ -17,4 +17,18 @@ defmodule Mix.Tasks.Malt do
     end)
     |> Enum.each(&IO.puts/1)
   end
+
+  defimpl String.Chars, for: MasterOfMalt.Core.Notes do
+    def to_string(notes) do
+      base = "Nose:\t#{notes.nose}\nPalate:\t#{notes.palate}\nFinish:\t#{notes.finish}"
+
+      if notes.overall, do: base <> "Overall:\n\t#{notes.overall}\n", else: base
+    end
+  end
+
+  defimpl String.Chars, for: MasterOfMalt.Core.Card do
+    def to_string(card) do
+      "#{card.name}:\n\t#{card.desc}\n\nImage:\t#{card.img}\n#{card.notes}"
+    end
+  end
 end

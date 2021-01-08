@@ -26,12 +26,4 @@ defmodule MasterOfMalt.Core.Notes do
     |> struct(data)
     |> Validation.validate_string_keys(@enforce_keys, "notes")
   end
-
-  defimpl String.Chars do
-    def to_string(notes) do
-      base = "Nose:\n\t#{notes.nose}\nPalate:\n\t#{notes.palate}\nFinish:\n\t#{notes.finish}"
-
-      if notes.overall, do: base <> "Overall:\n\t#{notes.overall}\n", else: base
-    end
-  end
 end
