@@ -15,10 +15,10 @@ defmodule MasterOfMalt.Core.Notes do
   def new(html) do
     data =
       [
-        nose: "#ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_noseTastingNote",
-        palate: "#ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_palateTastingNote",
-        finish: "#ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_finishTastingNote",
-        overall: "#ContentPlaceHolder1_ctl00_ctl03_TastingNoteBox_ctl00_overallTastingNote"
+        nose: "#ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_noseTastingNote",
+        palate: "#ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_palateTastingNote",
+        finish: "#ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_finishTastingNote",
+        overall: "#ContentPlaceHolder1_ctl00_ctl02_TastingNoteBox_ctl00_overallTastingNote"
       ]
       |> Enum.map(fn {k, v} -> {k, HTML.find_text(html, v)} end)
 
