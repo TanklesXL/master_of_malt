@@ -29,26 +29,9 @@ defmodule MasterOfMalt.Core.Notes do
 
   defimpl String.Chars do
     def to_string(notes) do
-      base = """
-        Nose:
-          #{notes.nose}
-        Palate:
-          #{notes.palate}
-        Finish:
-          #{notes.finish}
-      """
+      base = "Nose:\n\t#{notes.nose}\nPalate:\n\t#{notes.palate}\nFinish:\n\t#{notes.finish}"
 
-      case notes.overall do
-        "" ->
-          base
-
-        overall ->
-          base <>
-            """
-            Overall:
-              #{overall}
-            """
-      end
+      if notes.overall, do: base <> "Overall:\n\t#{notes.overall}\n", else: base
     end
   end
 end

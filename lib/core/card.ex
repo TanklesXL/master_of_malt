@@ -32,13 +32,11 @@ defmodule MasterOfMalt.Core.Card do
   defp name(html), do: HTML.find_text(html, "#ContentPlaceHolder1_pageH1")
 
   defp image_ref(html) do
-    src =
-      html
-      |> Floki.find("#ContentPlaceHolder1_ctl00_ctl02_MobileProductImage_imgProductBig2")
-      |> Floki.attribute("src")
-      |> List.first()
-
-    case src do
+    html
+    |> Floki.find("#ContentPlaceHolder1_ctl00_ctl02_MobileProductImage_imgProductBig2")
+    |> Floki.attribute("src")
+    |> List.first()
+    |> case do
       "" -> ""
       src -> "https:#{src}"
     end
@@ -48,15 +46,7 @@ defmodule MasterOfMalt.Core.Card do
 
   defimpl String.Chars do
     def to_string(card) do
-      """
-      #{card.name}
-        Description:
-          #{card.desc}
-        Image:
-          #{card.img}
-        Notes:
-          #{Kernel.to_string(card.notes)}
-      """
+      "#{card.name}:\n\t#{card.desc}\nImage:\n\t#{card.img}\n#{Kernel.to_string(card.notes)}"
     end
   end
 end
