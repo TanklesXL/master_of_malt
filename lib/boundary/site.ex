@@ -18,4 +18,8 @@ defmodule MasterOfMalt.Boundary.Site do
         :ok
     end
   end
+
+  def endpoint do
+    @endpoint
+  end
 end
