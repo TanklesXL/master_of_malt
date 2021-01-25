@@ -17,8 +17,7 @@ defmodule MasterOfMalt do
 
   @spec scrape_single(binary) :: card_result()
   def scrape_single(url) do
-    with :ok <- Site.validate_url(url),
-         {:ok, %Response{status_code: 200, body: body}} <- Site.get(url),
+    with {:ok, %Response{status_code: 200, body: body}} <- Site.get(url),
          {:ok, html} <- Floki.parse_document(body),
          {:ok, _card} = res <- Card.new(html) do
       res
