@@ -5,7 +5,7 @@ defmodule MasterOfMalt do
 
   @type card_result :: {:error, String.t()} | {:ok, Card.t()}
 
-  @spec scrape_many([binary], boolean()) :: [card_result()]
+  @spec scrape_many(list(binary), boolean()) :: list(card_result())
   def scrape_many(urls, _async \\ false)
   def scrape_many(urls, false), do: Enum.map(urls, &scrape_single/1)
 
