@@ -13,16 +13,17 @@ defmodule CoreHelpers do
   end
 
   def assert_notes(actual, expected) do
-    assert actual.nose == expected[:nose] |> String.trim()
-    assert actual.palate == expected[:palate] |> String.trim()
-    assert actual.finish == expected[:finish] |> String.trim()
-    assert actual.overall == (expected[:overall] || "") |> String.trim()
+    assert actual.nose == expected[:nose]
+    assert actual.palate == expected[:palate]
+    assert actual.finish == expected[:finish]
+    assert actual.overall == (expected[:overall] || "")
   end
 
   def assert_card(actual, expected) do
-    assert actual.name == expected[:name] |> String.trim()
-    assert actual.img == ("https:" <> expected[:img]) |> String.trim()
-    assert actual.desc == expected[:desc] |> String.trim()
+    assert actual.name == expected[:name]
+    assert actual.brand == expected[:brand]
+    assert actual.img == expected[:img]
+    assert actual.desc == expected[:desc]
     assert_notes(actual.notes, expected[:notes])
   end
 
@@ -53,6 +54,8 @@ defmodule CoreHelpers do
 
   def name, do: "Ardbeg 10 Year Old"
 
+  def brand, do: "Ardbeg"
+
   def desc do
     """
     A phenomenal whisky packing powerful peaty deliciousness, Ardbeg 10 Year Old is a favourite of many whisky lovers around the world.
@@ -62,7 +65,7 @@ defmodule CoreHelpers do
   end
 
   def img do
-    "//cdn2.masterofmalt.com/whiskies/p-2813/ardbeg/ardbeg-10-year-old-whisky.jpg?ss=2.0"
+    "https://cdn2.masterofmalt.com/whiskies/p-2813/ardbeg/ardbeg-10-year-old-whisky.jpg?ss=2.0"
   end
 
   def notes_html(notes) do
@@ -90,19 +93,11 @@ defmodule CoreHelpers do
 
   def card_html(info) do
     """
+    <meta content="#{info[:name]}" property="og:title">
+    <meta content="#{info[:brand]}" property="og:brand">
+    <meta content="#{info[:desc]}" property="og:description">
+    <meta content="#{info[:img]}" property="og:image">
     <div>
-      <h2 id="ContentPlaceHolder1_pageH1">
-        #{info[:name]}
-      </h2>
-      <img
-        id="ContentPlaceHolder1_ctl00_ctl02_MobileProductImage_imgProductBig2"
-        src="#{info[:img]}"
-      />
-      <div itemprop=description>
-        <p>
-          #{info[:desc]}
-        </p>
-      </div>
       #{notes_html(info[:notes])}
     </div>
     """

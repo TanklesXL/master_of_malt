@@ -8,7 +8,7 @@ defmodule MasterOfMalt.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: [
-        {:floki, "~> 0.29"},
+        {:floki, "~> 0.30"},
         {:httpoison, "~> 1.7"},
         {:credo, "~> 1.5.4", only: [:dev, :test], runtime: false}
       ]

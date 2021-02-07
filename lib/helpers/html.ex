@@ -6,4 +6,12 @@ defmodule MasterOfMalt.Helpers.HTML do
     |> Floki.text(deep: false)
     |> String.trim()
   end
+
+  @spec attribute_from_meta(binary() | Floki.html_tree(), binary()) :: String.t()
+  def attribute_from_meta(html, property) do
+    html
+    |> Floki.find("[property=\"#{property}\"]")
+    |> Floki.attribute("content")
+    |> List.first()
+  end
 end

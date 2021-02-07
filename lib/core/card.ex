@@ -2,11 +2,12 @@ defmodule MasterOfMalt.Core.Card do
   alias MasterOfMalt.Core.Notes
   alias MasterOfMalt.Helpers.{HTML, Validation}
 
-  @enforce_keys [:name, :img, :desc]
-  defstruct [:name, :img, :desc, :notes]
+  @enforce_keys [:name, :img, :desc, :brand]
+  defstruct [:name, :img, :desc, :notes, :brand]
 
   @type t :: %__MODULE__{
           name: String.t(),
+          brand: String.t(),
           img: String.t(),
           desc: String.t(),
           notes: Notes.t()
@@ -18,6 +19,7 @@ defmodule MasterOfMalt.Core.Card do
       {:ok, notes} ->
         %__MODULE__{
           name: name(html),
+          brand: brand(html),
           img: image_ref(html),
           desc: description(html),
           notes: notes
@@ -29,18 +31,11 @@ defmodule MasterOfMalt.Core.Card do
     end
   end
 
-  defp name(html), do: HTML.find_text(html, "#ContentPlaceHolder1_pageH1")
+  defp name(html), do: HTML.attribute_from_meta(html, "og:title")
 
-  defp image_ref(html) do
-    html
-    |> Floki.find("#ContentPlaceHolder1_ctl00_ctl02_MobileProductImage_imgProductBig2")
-    |> Floki.attribute("src")
-    |> List.first()
-    |> case do
-      "" -> ""
-      src -> "https:#{src}"
-    end
-  end
+  defp brand(html), do: HTML.attribute_from_meta(html, "og:brand")
 
-  defp description(html), do: HTML.find_text(html, "[itemprop=description] p")
+  defp image_ref(html), do: HTML.attribute_from_meta(html, "og:image")
+
+  defp description(html), do: HTML.attribute_from_meta(html, "og:description")
 end

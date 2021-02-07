@@ -17,6 +17,7 @@ defmodule CardTest do
     @tag name: name()
     @tag img: img()
     @tag desc: desc()
+    @tag brand: brand()
     @tag notes: notes_map()
     test "successfully parses html with empty overall field", %{result: result, data: expected} do
       assert {:ok, actual} = result
@@ -29,9 +30,9 @@ defmodule CardTest do
     end
 
     @tag notes: notes_map()
-    test "fails to parse when name, img and desc are missing", %{result: result} do
+    test "fails to parse when name, brand, img and desc are missing", %{result: result} do
       assert {:error, err} = result
-      assert_missing_key_errs(err, [:name, :img, :desc], "card")
+      assert_missing_key_errs(err, [:name, :img, :desc, :brand], "card")
     end
   end
 end

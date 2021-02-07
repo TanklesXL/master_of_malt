@@ -28,7 +28,7 @@ defmodule Mix.Tasks.Malt do
 
   defimpl String.Chars, for: MasterOfMalt.Core.Card do
     def to_string(card) do
-      "#{card.name}:\n\t#{card.desc}\n\nImage:\t#{card.img}\n#{card.notes}"
+      "#{card.name}:\nBrand: #{card.brand}\n\t#{card.desc}\n\nImage:\t#{card.img}\n#{card.notes}"
     end
   end
 end
