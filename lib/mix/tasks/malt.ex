@@ -22,7 +22,7 @@ defmodule Mix.Tasks.Malt do
     def to_string(notes) do
       base = "Nose:\t#{notes.nose}\nPalate:\t#{notes.palate}\nFinish:\t#{notes.finish}"
 
-      if notes.overall, do: base <> "\nOverall:\n\t#{notes.overall}\n", else: base
+      if notes.overall !== "", do: base <> "\nOverall:\t#{notes.overall}\n", else: base
     end
   end
 
